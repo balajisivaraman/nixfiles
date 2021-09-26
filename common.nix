@@ -80,12 +80,14 @@
 
   # Packages common to all machines
   environment.systemPackages = with pkgs; [
+    autojump
     fd
     fzf
     git
     gnupg
     gnutls
     htop
+    killall
     man-pages
     neovim
     python3

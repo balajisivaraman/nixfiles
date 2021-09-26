@@ -54,6 +54,7 @@
   #############################################################################
 
   services.emacs.package = pkgs.emacsPgtkGcc;
+  programs.gnupg.agent.pinentryFlavor = "qt";
 
   nixpkgs.overlays =
   let
@@ -75,6 +76,7 @@
     aspell
     aspellDicts.en
     cantata
+    dunst
     emacsPgtkGcc
     feh
     fnm
@@ -85,12 +87,20 @@
     imagemagick
     keepassxc
     latest.firefox-nightly-bin
+    libnotify
+    lxsession
     nextcloud-client
+    picom
     polybar
     rofi
     starship
+    udiskie
     vlc
+    xcape
     xclip
+    xorg.xmodmap
+    zathura
+    zotero
   ];
 
   #############################################################################
