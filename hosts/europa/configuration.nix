@@ -49,6 +49,26 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  systemd.timers.change-wallpaper = {
+    description = "Set my wallpaper using feh on boot and in 30 minute intervals";
+    wantedBy = [ "timers.target" ];
+    after = [ "graphical.target" ];
+    timerConfig = {
+      OnActiveSec = "2";
+      OnUnitActiveSec = "30min";
+    };
+  };
+  systemd.services.change-wallpaper = {
+    description = "Change Wallpaper";
+    serviceConfig = {
+      Type = "simple";
+      Environment = "DISPLAY=:0";
+      ExecStart = "${pkgs.feh}/bin/feh --bg-fill --randomize /media/backup/Nextcloud/Wallpapers";
+      User = "balaji";
+      Group = "users";
+    };
+  };
+
   #############################################################################
   ## Package Management
   #############################################################################
