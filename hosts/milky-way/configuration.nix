@@ -92,41 +92,52 @@
     nightlyOverlay
   ];
 
-  environment.systemPackages = with pkgs; [
-    alacritty
-    aspell
-    aspellDicts.en
-    binutils
-    cantata
-    delta
-    dunst
-    emacsPgtkGcc
-    feh
-    flameshot
-    gcc
-    gimp
-    google-chrome
-    gparted
-    imagemagick
-    keepassxc
-    latest.firefox-nightly-bin
-    libnotify
-    libreoffice-fresh
-    lxsession
-    nextcloud-client
-    picom
-    polybar
-    rofi
-    rustup
-    starship
-    udiskie
-    vlc
-    xcape
-    xclip
-    xorg.xmodmap
-    zathura
-    zotero
-  ];
+  environment.systemPackages = with pkgs;
+    let
+      polybar = pkgs.polybar.override {
+        i3Support = true;
+        i3GapsSupport = true;
+        pulseSupport = true;
+      };
+    in
+      [
+        alacritty
+        aspell
+        aspellDicts.en
+        binutils
+        cantata
+        delta
+        dunst
+        emacsPgtkGcc
+        feh
+        flameshot
+        gcc
+        gimp
+        google-chrome
+        gparted
+        imagemagick
+        keepassxc
+        latest.firefox-nightly-bin
+        libnotify
+        libreoffice-fresh
+        lxsession
+        nextcloud-client
+        pamixer
+        pavucontrol
+        picom
+        polybar
+        qtkeychain
+        rofi
+        rustup
+        starship
+        udiskie
+        vlc
+        xcape
+        xclip
+        xorg.xmodmap
+        zathura
+        zotero
+      ];
 
   #############################################################################
   ## Virtualisation

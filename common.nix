@@ -113,7 +113,7 @@
     uid = 1000;
     description = "Balaji Sivaraman <balaji@balajisivaraman.com>";
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "audio" "wheel" ];
     group = "users";
     initialPassword = "breadbread";
     shell = "/run/current-system/sw/bin/fish";
