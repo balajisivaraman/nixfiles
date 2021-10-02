@@ -74,6 +74,7 @@
   ## Package Management
   #############################################################################
 
+  fonts.otf-san-francisco.enable = true;
   services.emacs.package = pkgs.emacsPgtkGcc;
   programs.gnupg.agent.pinentryFlavor = "qt";
 
