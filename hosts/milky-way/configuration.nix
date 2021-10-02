@@ -124,12 +124,15 @@
         nextcloud-client
         pamixer
         pavucontrol
+        pcmanfm
         picom
         polybar
         qtkeychain
         rofi
         rustup
         starship
+        nordic
+        thunderbird
         udiskie
         vlc
         xcape
