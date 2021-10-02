@@ -121,6 +121,7 @@
         latest.firefox-nightly-bin
         libnotify
         libreoffice-fresh
+        libsecret
         lxsession
         nextcloud-client
         pamixer
