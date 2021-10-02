@@ -51,65 +51,6 @@ with lib;
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  systemd.timers.change-wallpaper = {
-    description = "Set my wallpaper using feh on boot and in 30 minute intervals";
-    wantedBy = [ "timers.target" ];
-    after = [ "graphical.target" ];
-    timerConfig = {
-      OnActiveSec = "0";
-      OnUnitActiveSec = "30min";
-    };
-  };
-  systemd.services.change-wallpaper = {
-    description = "Change Wallpaper";
-    serviceConfig = {
-      Type = "simple";
-      Environment = "DISPLAY=:0";
-      ExecStart = "${pkgs.feh}/bin/feh --bg-fill --randomize /media/backup/Nextcloud/Wallpapers";
-      User = "balaji";
-      Group = "users";
-    };
-  };
-  systemd.services.nextcloud = {
-    description = "Start Nextcloud";
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
-    wantedBy = [ "graphical.target" ];
-    partOf = [ "graphical.target" ];
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.bash}/bin/bash --login -c ${pkgs.writeShellScript "nextcloud.sh" (fileContents ./nextcloud.sh)}";
-      User = "balaji";
-      Group = "users";
-    };
-  };
-  systemd.services.thunderbird = {
-    description = "Start Thunderbird";
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
-    wantedBy = [ "graphical.target" ];
-    partOf = [ "graphical.target" ];
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.bash}/bin/bash --login -c ${pkgs.writeShellScript "thunderbird.sh" (fileContents ./thunderbird.sh)}";
-      User = "balaji";
-      Group = "users";
-    };
-  };
-  systemd.services.zotero = {
-    description = "Start Zotero";
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
-    wantedBy = [ "graphical.target" ];
-    partOf = [ "graphical.target" ];
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.bash}/bin/bash --login -c ${pkgs.writeShellScript "zotero.sh" (fileContents ./zotero.sh)}";
-      User = "balaji";
-      Group = "users";
-    };
-  };
-
   #############################################################################
   ## Package Management
   #############################################################################
@@ -117,6 +58,10 @@ with lib;
   fonts.otf-san-francisco.enable = true;
   services.emacs.package = pkgs.emacsPgtkGcc;
   programs.gnupg.agent.pinentryFlavor = "qt";
+  services.change-wallpaper.enable = true;
+  services.thunderbird.enable = true;
+  services.nextcloud-client.enable = true;
+  services.zotero.enable = true;
 
   nixpkgs.overlays =
   let
