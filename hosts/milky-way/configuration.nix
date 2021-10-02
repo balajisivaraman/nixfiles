@@ -111,6 +111,7 @@
     keepassxc
     latest.firefox-nightly-bin
     libnotify
+    libreoffice-fresh
     lxsession
     nextcloud-client
     picom
