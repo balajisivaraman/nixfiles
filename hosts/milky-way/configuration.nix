@@ -55,7 +55,7 @@
     wantedBy = [ "timers.target" ];
     after = [ "graphical.target" ];
     timerConfig = {
-      OnActiveSec = "2";
+      OnActiveSec = "0";
       OnUnitActiveSec = "30min";
     };
   };
