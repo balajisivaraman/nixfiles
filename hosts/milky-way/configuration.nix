@@ -8,19 +8,20 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.supportedFilesystems = [ "ntfs" ];
 
   #############################################################################
   ## Networking
   #############################################################################
 
-  networking.hostName = "europa";
+  networking.hostName = "milky-way";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.enp0s3.useDHCP = true;
-  networking.firewall.trustedInterfaces = [ "lo" "enp0s3" ];
+  networking.interfaces.enp40s0.useDHCP = true;
+  networking.firewall.trustedInterfaces = [ "lo" "enp40s0" ];
 
   #############################################################################
   ## X Server & Desktop Environment Configuration
@@ -96,10 +97,10 @@
     aspell
     aspellDicts.en
     cantata
+    delta
     dunst
     emacsPgtkGcc
     feh
-    fnm
     flameshot
     gimp
     google-chrome
@@ -126,14 +127,4 @@
   #############################################################################
   ## Virtualisation
   #############################################################################
-
-  # Enable guest additions on the VM
-  virtualisation.virtualbox.guest.enable = true;
-
-  # Enable the host shared folder
-  fileSystems."/mnt/HostShare" = {
-    fsType = "vboxsf";
-    device = "Share";
-    options = [ "rw" "nofail" ];
-  };
 }

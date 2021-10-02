@@ -109,7 +109,7 @@
   users.mutableUsers = true;
 
   # My default user account on machines
-  users.users.balaji = {
+  users.extraUsers.balaji = {
     uid = 1000;
     description = "Balaji Sivaraman <balaji@balajisivaraman.com>";
     isNormalUser = true;
