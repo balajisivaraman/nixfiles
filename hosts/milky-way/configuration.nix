@@ -96,12 +96,14 @@
     alacritty
     aspell
     aspellDicts.en
+    binutils
     cantata
     delta
     dunst
     emacsPgtkGcc
     feh
     flameshot
+    gcc
     gimp
     google-chrome
     gparted
@@ -114,6 +116,7 @@
     picom
     polybar
     rofi
+    rustup
     starship
     udiskie
     vlc
