@@ -13,6 +13,20 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05";
 
+  # Only keep the last 500MiB of systemd journal.
+  services.journald.extraConfig = "SystemMaxUse=500M";
+
+  # Collect nix store garbage and optimise daily.
+  nix.gc.automatic = true;
+  nix.gc.options = "--delete-older-than 30d";
+  nix.optimise.automatic = true;
+
+  # Upgrade packages and reboot if needed
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = true;
+  system.autoUpgrade.channel = https://nixos.org/channels/nixos-21.05;
+  system.autoUpgrade.dates = "06:45";
+
   #############################################################################
   ## Font Configuration
   #############################################################################
