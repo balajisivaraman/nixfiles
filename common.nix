@@ -95,6 +95,7 @@
   # Packages common to all machines
   environment.systemPackages = with pkgs; [
     autojump
+    bat
     fd
     fzf
     git
