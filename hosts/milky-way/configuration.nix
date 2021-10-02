@@ -62,6 +62,7 @@ with lib;
   services.thunderbird.enable = true;
   services.nextcloud-client.enable = true;
   services.zotero.enable = true;
+  programs.i3lockr.enable = true;
 
   nixpkgs.overlays =
   let
