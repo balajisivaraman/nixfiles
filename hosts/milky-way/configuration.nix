@@ -1,5 +1,6 @@
-{ config, pkgs, options, ... }:
+{ config, pkgs, lib, options, ... }:
 
+with lib;
 {
   #############################################################################
   ## System Configuration
@@ -65,6 +66,45 @@
       Type = "simple";
       Environment = "DISPLAY=:0";
       ExecStart = "${pkgs.feh}/bin/feh --bg-fill --randomize /media/backup/Nextcloud/Wallpapers";
+      User = "balaji";
+      Group = "users";
+    };
+  };
+  systemd.services.nextcloud = {
+    description = "Start Nextcloud";
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+    wantedBy = [ "graphical.target" ];
+    partOf = [ "graphical.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.bash}/bin/bash --login -c ${pkgs.writeShellScript "nextcloud.sh" (fileContents ./nextcloud.sh)}";
+      User = "balaji";
+      Group = "users";
+    };
+  };
+  systemd.services.thunderbird = {
+    description = "Start Thunderbird";
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+    wantedBy = [ "graphical.target" ];
+    partOf = [ "graphical.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.bash}/bin/bash --login -c ${pkgs.writeShellScript "thunderbird.sh" (fileContents ./thunderbird.sh)}";
+      User = "balaji";
+      Group = "users";
+    };
+  };
+  systemd.services.zotero = {
+    description = "Start Zotero";
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+    wantedBy = [ "graphical.target" ];
+    partOf = [ "graphical.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.bash}/bin/bash --login -c ${pkgs.writeShellScript "zotero.sh" (fileContents ./zotero.sh)}";
       User = "balaji";
       Group = "users";
     };
