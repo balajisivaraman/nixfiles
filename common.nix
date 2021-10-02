@@ -51,7 +51,7 @@
       "3.in.pool.ntp.org"
     ];
   };
-  time.timeZone = "Asia/Kolktata";
+  time.timeZone = "Asia/Kolkata";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_IN.UTF-8";
