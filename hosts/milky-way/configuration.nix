@@ -75,6 +75,7 @@ with lib;
       ref = "master";
       rev = "30d84ab85192f19beaa7a9af4640d8f4a2e74da5"; # change the revision
     }))
+    (import "${fetchTarball "https://github.com/nix-community/fenix/archive/main.tar.gz"}/overlay.nix")
     nightlyOverlay
   ];
 
@@ -116,6 +117,7 @@ with lib;
         polybar
         qtkeychain
         rofi
+        rust-analyzer
         rustup
         starship
         nordic
