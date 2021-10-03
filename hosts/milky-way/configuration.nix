@@ -11,6 +11,19 @@ with lib;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];
 
+  nix = {
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      keep-outputs = true
+      keep-derivations = true
+      experimental-features = nix-command flakes
+    '';
+  };
+
+  environment.pathsToLink = [
+    "/share/nix-direnv"
+  ];
+
   #############################################################################
   ## Networking
   #############################################################################
@@ -77,6 +90,7 @@ with lib;
       rev = "30d84ab85192f19beaa7a9af4640d8f4a2e74da5"; # change the revision
     }))
     (import "${fetchTarball "https://github.com/nix-community/fenix/archive/main.tar.gz"}/overlay.nix")
+    (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; } )
     nightlyOverlay
   ];
 
@@ -95,6 +109,7 @@ with lib;
         binutils
         cantata
         delta
+        direnv
         dunst
         emacsPgtkGcc
         feh
@@ -112,6 +127,7 @@ with lib;
         libsecret
         lxsession
         nextcloud-client
+        nix-direnv
         pamixer
         pavucontrol
         pcmanfm
