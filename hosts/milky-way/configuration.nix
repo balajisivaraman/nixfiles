@@ -69,13 +69,13 @@ with lib;
   #############################################################################
 
   fonts.otf-san-francisco.enable = true;
-  services.emacs.package = pkgs.emacsPgtkGcc;
   programs.gnupg.agent.pinentryFlavor = "qt";
   services.change-wallpaper.enable = true;
   services.thunderbird.enable = true;
   services.nextcloud-client.enable = true;
   services.zotero.enable = true;
   programs.i3lockr.enable = true;
+  programs.bs-emacs.enable = true;
 
   nixpkgs.overlays =
   let
@@ -84,11 +84,6 @@ with lib;
     moz-url = builtins.fetchTarball { url = "https://github.com/mozilla/nixpkgs-mozilla/archive/${moz-rev}.tar.gz";};
     nightlyOverlay = (import "${moz-url}/firefox-overlay.nix");
   in [
-    (import (builtins.fetchGit {
-      url = "https://github.com/nix-community/emacs-overlay.git";
-      ref = "master";
-      rev = "30d84ab85192f19beaa7a9af4640d8f4a2e74da5"; # change the revision
-    }))
     (import "${fetchTarball "https://github.com/nix-community/fenix/archive/main.tar.gz"}/overlay.nix")
     (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; } )
     nightlyOverlay
@@ -111,7 +106,6 @@ with lib;
         delta
         direnv
         dunst
-        emacsPgtkGcc
         feh
         fnm
         flameshot
