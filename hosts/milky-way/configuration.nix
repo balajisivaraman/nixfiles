@@ -138,6 +138,7 @@ with lib;
         starship
         nordic
         thunderbird
+        tree-sitter
         udiskie
         vlc
         xcape
