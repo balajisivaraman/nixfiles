@@ -135,8 +135,6 @@ with lib;
         polybar
         libsForQt5.qtkeychain
         rofi
-        rust-analyzer
-        rustup
         starship
         nordic
         thunderbird
