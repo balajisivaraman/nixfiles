@@ -98,6 +98,7 @@ with lib;
         dunst
         emacsPgtkGcc
         feh
+        fnm
         flameshot
         gcc
         gimp
@@ -116,7 +117,7 @@ with lib;
         pcmanfm
         picom
         polybar
-        qtkeychain
+        libsForQt5.qtkeychain
         rofi
         rust-analyzer
         rustup
