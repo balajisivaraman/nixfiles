@@ -138,6 +138,7 @@ with lib;
         xcape
         xclip
         xorg.xmodmap
+        xss-lock
         zathura
         zotero
       ];
