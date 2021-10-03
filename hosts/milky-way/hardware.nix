@@ -15,18 +15,13 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/9a3a8edd-b4b9-4f17-87ea-b4d1e355e41a";
+    { device = "/dev/disk/by-uuid/1f360963-fd15-4d5d-a5b9-7acc4ce80ff6";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/9B0B-5A57";
+    { device = "/dev/disk/by-uuid/6B62-1592";
       fsType = "vfat";
-    };
-
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/e780f0c2-ce72-4497-87c6-9dac5f45d555";
-      fsType = "ext4";
     };
 
   fileSystems."/media/backup" =
@@ -47,7 +42,4 @@
     };
 
   swapDevices = [ ];
-
-  # high-resolution display
-  hardware.video.hidpi.enable = lib.mkDefault true;
 }
