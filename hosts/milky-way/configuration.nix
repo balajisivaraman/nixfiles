@@ -129,6 +129,7 @@ with lib;
         polybar
         libsForQt5.qtkeychain
         rofi
+        sqlite
         starship
         nordic
         thunderbird
