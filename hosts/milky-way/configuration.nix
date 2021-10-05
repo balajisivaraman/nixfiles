@@ -107,7 +107,6 @@ with lib;
         direnv
         dunst
         feh
-        fnm
         flameshot
         gcc
         gimp
@@ -122,6 +121,7 @@ with lib;
         lxsession
         nextcloud-client
         nix-direnv
+        nodejs-16_x
         pamixer
         pavucontrol
         pcmanfm
