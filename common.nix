@@ -99,6 +99,7 @@
     fd
     fzf
     git
+    gnumake
     gnupg
     gnutls
     htop
