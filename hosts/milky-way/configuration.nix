@@ -90,59 +90,53 @@ with lib;
   ];
 
   environment.systemPackages = with pkgs;
-    let
-      polybar = pkgs.polybar.override {
-        i3Support = true;
-        i3GapsSupport = true;
-        pulseSupport = true;
-      };
-    in
-      [
-        alacritty
-        aspell
-        aspellDicts.en
-        binutils
-        cantata
-        delta
-        direnv
-        dunst
-        feh
-        flameshot
-        gcc
-        gimp
-        google-chrome
-        gparted
-        imagemagick
-        keepassxc
-        latest.firefox-nightly-bin
-        libnotify
-        libreoffice-fresh
-        libsecret
-        lxsession
-        nextcloud-client
-        nix-direnv
-        nodejs-16_x
-        pamixer
-        pavucontrol
-        pcmanfm
-        picom
-        polybar
-        libsForQt5.qtkeychain
-        rofi
-        sqlite
-        starship
-        nordic
-        thunderbird
-        tree-sitter
-        udiskie
-        vlc
-        xcape
-        xclip
-        xorg.xmodmap
-        xss-lock
-        zathura
-        zotero
-      ];
+    [
+      alacritty
+      aspell
+      aspellDicts.en
+      binutils
+      cantata
+      delta
+      direnv
+      dunst
+      feh
+      flameshot
+      gcc
+      gimp
+      google-chrome
+      gparted
+      i3status-rust
+      imagemagick
+      keepassxc
+      latest.firefox-nightly-bin
+      libnotify
+      libreoffice-fresh
+      libsecret
+      lm_sensors
+      lxsession
+      nextcloud-client
+      nix-direnv
+      nodejs-16_x
+      pamixer
+      pavucontrol
+      pcmanfm
+      picom
+      libsForQt5.qtkeychain
+      rofi
+      sqlite
+      starship
+      nordic
+      thunderbird
+      tree-sitter
+      udiskie
+      vlc
+      xcape
+      xclip
+      xorg.xmodmap
+      xss-lock
+      zathura
+      zotero
+    ];
 
   #############################################################################
   ## Virtualisation
