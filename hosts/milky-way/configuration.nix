@@ -100,6 +100,13 @@ with lib;
       direnv
       dunst
       feh
+      (fenix.stable.withComponents [
+        "cargo"
+        "clippy"
+        "rust-src"
+        "rustc"
+        "rustfmt"
+      ])
       flameshot
       gcc
       gimp
@@ -123,6 +130,7 @@ with lib;
       picom
       libsForQt5.qtkeychain
       rofi
+      rust-analyzer
       sqlite
       starship
       nordic
@@ -137,6 +145,10 @@ with lib;
       zathura
       zotero
     ];
+
+  environment.variables = {
+    "RUST_SRC_PATH" = "${pkgs.fenix.stable.rust-src}/bin/rust-lib/src";
+  };
 
   #############################################################################
   ## Virtualisation
