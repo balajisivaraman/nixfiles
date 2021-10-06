@@ -25,6 +25,30 @@ with lib;
   ];
 
   #############################################################################
+  ## Font Configuration
+  #############################################################################
+
+  fonts = {
+    fontDir.enable = true;
+    fonts = with pkgs; [
+      (nerdfonts.override { fonts = [ "Terminus" ]; })
+    ];
+    fontconfig = {
+      antialias = true;
+      hinting.enable = true;
+      subpixel = {
+        rgba = "rgb";
+        lcdfilter = "default";
+      };
+      defaultFonts = {
+        serif = [ "Noto Serif" ];
+        sansSerif = [ "SF Pro Text" ];
+        monospace = [ "NotoSansMono Nerd Font" ];
+      };
+    };
+  };
+
+  #############################################################################
   ## Networking
   #############################################################################
 
