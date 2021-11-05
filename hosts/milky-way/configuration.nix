@@ -170,14 +170,12 @@ with lib;
         rofi
         rust-analyzer
         sqlite
-        starship
         nordic
         thunderbird
         tree-sitter
         udiskie
         vlc
         xcape
-        xclip
         xorg.xmodmap
         xss-lock
         zathura

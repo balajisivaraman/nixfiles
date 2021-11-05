@@ -85,12 +85,14 @@
     python3
     ripgrep
     rsync
+    starship
     stow
     tmux
     unzip
     vim
     wget
     which
+    xclip
   ];
 
   #############################################################################
