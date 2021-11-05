@@ -109,5 +109,10 @@
     group = "users";
     initialPassword = "breadbread";
     shell = "/run/current-system/sw/bin/fish";
+
+    # Such pubkey!
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILaXU3aIlxXu6Vnjk1Hw6ANq2HYPvsgbiVadibMXTL8K balaji@milky-way"
+    ];
   };
 }
