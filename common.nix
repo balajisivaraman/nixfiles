@@ -24,7 +24,7 @@
   # Upgrade packages and reboot if needed
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = true;
-  system.autoUpgrade.channel = https://nixos.org/channels/nixos-unstable;
+  system.autoUpgrade.channel = https://nixos.org/channels/nixos-21.05;
   system.autoUpgrade.dates = "06:45";
 
   #############################################################################
