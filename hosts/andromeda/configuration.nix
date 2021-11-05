@@ -42,6 +42,8 @@ with lib;
   ## Services
   #############################################################################
 
+  services.fail2ban.enable = true;
+
   # Every machine gets an sshd
   services.openssh = {
     enable = true;
