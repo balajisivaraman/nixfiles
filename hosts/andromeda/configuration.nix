@@ -42,6 +42,35 @@ with lib;
   ## Services
   #############################################################################
 
+  # WWW
+  services.caddy.enable = true;
+  services.caddy.config = ''
+    (common_config) {
+      encode gzip
+
+      header Permissions-Policy "interest-cohort=()"
+      header Referrer-Policy "strict-origin-when-cross-origin"
+      header Strict-Transport-Security "max-age=31536000; includeSubDomains"
+      header X-Content-Type-Options "nosniff"
+      header X-Frame-Options "SAMEORIGIN"
+
+      header -Server
+    }
+
+    balajisivaraman.com {
+      import common_config
+      redir https://www.balajisivaraman.com{uri}
+    }
+
+    www.balajisivaraman.com {
+      import common_config
+
+      file_server {
+        root /home/balaji/projects/sites/balajisivaraman.com/www
+      }
+    }
+  '';
+
   services.fail2ban.enable = true;
 
   # Every machine gets an sshd
