@@ -81,10 +81,75 @@ with lib;
         root /var/www/balajisivaraman.com/www
       }
     }
+
+    cloud.balajisivaraman.com {
+      import common_config
+
+      root * ${config.services.nextcloud.package}
+      php_fastcgi unix/${config.services.phpfpm.pools.nextcloud.settings.listen}
+      file_server
+
+      redir /.well-known/carddav /remote.php/dav 301
+      redir /.well-known/caldav /remote.php/dav 301
+
+      # .htaccess / data / config / ... shouldn't be accessible from outside
+      @forbidden {
+        path    /.htaccess
+        path    /data/*
+        path    /config/*
+        path    /db_structure
+        path    /.xml
+        path    /README
+        path    /3rdparty/*
+        path    /lib/*
+        path    /templates/*
+        path    /occ
+        path    /console.php
+      }
+
+      respond @forbidden 404
+    }
   '';
 
   services.fail2ban.enable = true;
 
+  # Cloud
+  services.nginx.enable = false;
+  services.nextcloud = {
+    config = {
+      adminuser = "root";
+      adminpassFile = "/var/lib/nextcloud/.adminpass";
+      dbhost = "/run/postgresql";
+      dbname = "nextcloud";
+      dbport = "5432";
+      dbtype = "pgsql";
+      dbuser = "nextcloud";
+      extraTrustedDomains = [ "cloud.balajisivaraman.com" ];
+    };
+    enable = true;
+    hostName = "cloud.balajisivaraman.com";
+    https = true;
+    package = pkgs.nextcloud22;
+    poolSettings = {
+      "pm" = "dynamic";
+      "pm.max_children" = "5";
+      "pm.start_servers" = "2";
+      "pm.min_spare_servers" = "1";
+      "pm.max_spare_servers" = "3";
+    };
+  };
+
+  systemd.services."nextcloud-setup" = {
+    requires = ["postgresql.service"];
+    after = ["postgresql.service"];
+  };
+
+  services.phpfpm.pools.nextcloud.settings = {
+    "listen.owner" = "caddy";
+    "listen.group" = "caddy";
+  };
+
+  # SSH
   # Every machine gets an sshd
   services.openssh = {
     enable = true;
@@ -97,4 +162,19 @@ with lib;
 
   # Start ssh-agent as a systemd user service
   programs.ssh.startAgent = true;
+
+  # Postgres
+  services.postgresql = {
+    enable = true;
+    package = pkgs.postgresql_13;
+    ensureDatabases = [ "nextcloud" ];
+    ensureUsers = [
+      {
+        name = "nextcloud";
+        ensurePermissions = {
+          "DATABASE nextcloud" = "ALL PRIVILEGES";
+        };
+      }
+    ];
+  };
 }
