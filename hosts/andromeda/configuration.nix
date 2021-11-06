@@ -46,6 +46,17 @@ with lib;
   # WWW
   services.caddy.enable = true;
   services.caddy.config = ''
+    {
+      log {
+        level INFO
+        output file /var/log/caddy/caddy.log {
+          roll_size     100MiB
+          roll_keep     5
+          roll_keep_for 720h
+        }
+      }
+    }
+
     (common_config) {
       encode gzip
 
