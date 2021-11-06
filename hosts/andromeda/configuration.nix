@@ -26,6 +26,7 @@ with lib;
   networking.useDHCP = false;
   networking.interfaces.eth0.useDHCP = true;
   networking.firewall.trustedInterfaces = [ "lo" "eth0" ];
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 
   #############################################################################
   ## Package Management
