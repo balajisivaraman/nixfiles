@@ -25,7 +25,7 @@ with lib;
   networking.usePredictableInterfaceNames = false;
   networking.useDHCP = false;
   networking.interfaces.eth0.useDHCP = true;
-  networking.firewall.trustedInterfaces = [ "lo" "enp0s5" ];
+  networking.firewall.trustedInterfaces = [ "lo" "eth0" ];
 
   #############################################################################
   ## Package Management
