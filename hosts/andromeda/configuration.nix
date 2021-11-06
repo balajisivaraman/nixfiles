@@ -78,7 +78,7 @@ with lib;
       import common_config
 
       file_server {
-        root /home/balaji/projects/sites/balajisivaraman.com/www
+        root /var/www/balajisivaraman.com/www
       }
     }
   '';
