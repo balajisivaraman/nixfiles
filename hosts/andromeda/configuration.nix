@@ -82,6 +82,12 @@ with lib;
       }
     }
 
+    mta-sts.balajisivaraman.com {
+      file_server {
+        root /var/www/balajisivaraman.com/mta-sts
+      }
+    }
+
     cloud.balajisivaraman.com {
       import common_config
       header -X-Content-Type-Options
