@@ -84,13 +84,25 @@ with lib;
 
     cloud.balajisivaraman.com {
       import common_config
+      header -X-Content-Type-Options
 
       root * ${config.services.nextcloud.package}
-      php_fastcgi unix/${config.services.phpfpm.pools.nextcloud.settings.listen}
+      php_fastcgi unix/${config.services.phpfpm.pools.nextcloud.settings.listen} {
+        env front_controller_active true
+      }
       file_server
 
+      rewrite /index.php/* /index.php?{query}
       redir /.well-known/carddav /remote.php/dav 301
       redir /.well-known/caldav /remote.php/dav 301
+
+      @store {
+        path_regexp store ^/store-apps
+      }
+
+      handle @store {
+             root * ${config.services.nextcloud.home}
+      }
 
       # .htaccess / data / config / ... shouldn't be accessible from outside
       @forbidden {
