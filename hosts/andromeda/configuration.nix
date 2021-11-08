@@ -78,7 +78,15 @@ with lib;
       import common_config
 
       file_server {
-        root /var/www/balajisivaraman.com/www
+        root /var/www/balajisivaraman.com/home
+      }
+    }
+
+    blog.balajisivaraman.com {
+      import common_config
+
+      file_server {
+        root /var/www/balajisivaraman.com/blog
       }
     }
 
