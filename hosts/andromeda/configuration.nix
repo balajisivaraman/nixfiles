@@ -80,6 +80,8 @@ with lib;
       file_server {
         root /var/www/balajisivaraman.com/home
       }
+
+      ${fileContents ./www-balajisivaraman-com.caddyfile}
     }
 
     blog.balajisivaraman.com {
