@@ -137,6 +137,11 @@ with lib;
 
       respond @forbidden 404
     }
+
+    feeddb.balajisivaraman.com {
+      import common_config
+      reverse_proxy http://127.0.0.1:8888
+    }
   '';
 
   services.fail2ban.enable = true;
@@ -175,6 +180,16 @@ with lib;
   services.phpfpm.pools.nextcloud.settings = {
     "listen.owner" = "caddy";
     "listen.group" = "caddy";
+  };
+
+  # RSS Reader
+  services.miniflux = {
+    enable = true;
+    config = {
+      LISTEN_ADDR = "localhost:8888";
+      BASE_URL = "https://feeddb.balajisivaraman.com/";
+    };
+    adminCredentialsFile = "/home/balaji/miniflux-admin-credentials";
   };
 
   # SSH
