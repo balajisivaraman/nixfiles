@@ -162,7 +162,14 @@ with lib;
     enable = true;
     hostName = "cloud.balajisivaraman.com";
     https = true;
-    package = pkgs.nextcloud22;
+    package = pkgs.nextcloud22.overrideAttrs (oldAttrs: rec {
+      version = "22.2.2";
+      name = "nextcloud-${version}";
+      src = pkgs.fetchurl {
+        url = "https://download.nextcloud.com/server/releases/nextcloud-${version}.tar.bz2";
+        sha256 = "sha256-lDvn29N19Lhm3P2YIVM/85vr/U07qR+M8TkF/D/GTfA=";
+      };
+    });
     poolSettings = {
       "pm" = "dynamic";
       "pm.max_children" = "5";
