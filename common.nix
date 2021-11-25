@@ -115,6 +115,7 @@
     # Such pubkey!
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILaXU3aIlxXu6Vnjk1Hw6ANq2HYPvsgbiVadibMXTL8K balaji@milky-way"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMr8UZIFIzlgBQZcvgEu5oXUUbx+p7nC6jgBtH2NVo0i balaji@alpha-centauri-wsl"
     ];
   };
 }
