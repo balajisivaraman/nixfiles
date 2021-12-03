@@ -80,6 +80,7 @@ with lib;
   };
 
   services.gnome.gnome-keyring.enable = true;
+  security.pam.services.balaji.enableGnomeKeyring = true;
 
   # Enable nvidia graphics
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -100,6 +101,8 @@ with lib;
   services.thunderbird.enable = true;
   services.nextcloud-client.enable = true;
   services.zotero.enable = true;
+  services.udev.packages = [ pkgs.yubikey-personalization ];
+  services.pcscd.enable = true;
   programs.i3lockr.enable = true;
 
   nixpkgs.overlays =
@@ -178,6 +181,10 @@ with lib;
         xcape
         xorg.xmodmap
         xss-lock
+        yubikey-manager
+        yubikey-manager-qt
+        yubikey-personalization-gui
+        yubioath-desktop
         zathura
         zotero
       ];
