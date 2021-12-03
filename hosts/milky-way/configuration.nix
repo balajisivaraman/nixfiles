@@ -98,7 +98,7 @@ with lib;
   services.change-wallpaper.enable = true;
   services.emacs.package = pkgs.emacsPgtkGcc;
   services.emacs.enable = true;
-  services.thunderbird.enable = true;
+  services.thunderbird.enable = false;
   services.nextcloud-client.enable = true;
   services.zotero.enable = true;
   services.udev.packages = [ pkgs.yubikey-personalization ];
