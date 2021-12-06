@@ -135,6 +135,7 @@ with lib;
         alacritty
         aspell
         aspellDicts.en
+        audacity
         binutils
         cantata
         delta
@@ -183,6 +184,7 @@ with lib;
         xcape
         xorg.xmodmap
         xss-lock
+        youtube-dl
         yubikey-manager
         yubikey-manager-qt
         yubikey-personalization-gui
