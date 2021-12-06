@@ -98,6 +98,7 @@ with lib;
   services.change-wallpaper.enable = true;
   services.emacs.package = pkgs.emacsPgtkGcc;
   services.emacs.enable = true;
+  services.gvfs.enable = true;
   services.thunderbird.enable = false;
   services.nextcloud-client.enable = true;
   services.zotero.enable = true;
@@ -154,6 +155,7 @@ with lib;
         google-chrome
         gparted
         imagemagick
+        jmtpfs
         keepassxc
         latest.firefox-nightly-bin
         libnotify
