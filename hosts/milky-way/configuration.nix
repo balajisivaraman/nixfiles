@@ -98,6 +98,7 @@ with lib;
   programs.i3lockr.enable = true;
 
   services.change-wallpaper.enable = true;
+  services.clipcat.enable = true;
   services.emacs.package = pkgs.emacsPgtkGcc;
   services.emacs.enable = true;
   services.gvfs.enable = true;
