@@ -95,16 +95,17 @@ with lib;
 
   fonts.otf-san-francisco.enable = true;
   programs.gnupg.agent.pinentryFlavor = "qt";
+  programs.i3lockr.enable = true;
+
   services.change-wallpaper.enable = true;
   services.emacs.package = pkgs.emacsPgtkGcc;
   services.emacs.enable = true;
   services.gvfs.enable = true;
-  services.thunderbird.enable = false;
   services.nextcloud-client.enable = true;
-  services.zotero.enable = true;
-  services.udev.packages = [ pkgs.yubikey-personalization ];
   services.pcscd.enable = true;
-  programs.i3lockr.enable = true;
+  services.thunderbird.enable = false;
+  services.udev.packages = [ pkgs.yubikey-personalization ];
+  services.zotero.enable = true;
 
   nixpkgs.overlays =
   let
