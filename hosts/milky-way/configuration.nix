@@ -120,7 +120,7 @@ with lib;
     (import (builtins.fetchGit {
       url = "https://github.com/nix-community/emacs-overlay.git";
       ref = "master";
-      rev = "30d84ab85192f19beaa7a9af4640d8f4a2e74da5"; # change the revision
+      rev = "555de7d00eb7c8df21242fdad6f3a6f2201e7e14"; # change the revision
     }))
     nightlyOverlay
   ];
