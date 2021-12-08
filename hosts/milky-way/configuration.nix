@@ -155,7 +155,9 @@ with lib;
         flameshot
         gcc
         gimp
+        go
         google-chrome
+        gopls
         gparted
         imagemagick
         jmtpfs
