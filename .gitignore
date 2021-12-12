@@ -1,2 +1,4 @@
 # Symlink to the host directory
 host
+
+hosts/milky-way/xmonad-config.hs
