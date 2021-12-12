@@ -114,7 +114,7 @@ with lib;
   services.pcscd.enable = true;
   services.thunderbird.enable = false;
   services.udev.packages = [ pkgs.yubikey-personalization ];
-  services.zotero.enable = true;
+  services.zotero.enable = false;
 
   nixpkgs.overlays =
   let
