@@ -71,11 +71,19 @@ with lib;
     displayManager = {
       autoLogin.enable = true;
       autoLogin.user = "balaji";
-      defaultSession = "none+i3";
+      defaultSession = "none+xmonad";
     };
     windowManager.i3 = {
       package = pkgs.i3-gaps;
       enable = true;
+    };
+    windowManager.xmonad = {
+      enable = true;
+      extraPackages = haskellPackages: [
+        haskellPackages.xmonad-contrib_0_17_0
+        haskellPackages.xmonad-extras_0_17_0
+      ];
+      config = pkgs.lib.readFile ./xmonad-config.hs;
     };
   };
 
@@ -180,12 +188,14 @@ with lib;
         rofi
         rust-analyzer
         sqlite
+        stalonetray
         nordic
         thunderbird
         tree-sitter
         udiskie
         vlc
         xcape
+        xmobar
         xorg.xmodmap
         xss-lock
         youtube-dl
