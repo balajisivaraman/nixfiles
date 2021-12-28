@@ -142,6 +142,11 @@ with lib;
       import common_config
       reverse_proxy http://127.0.0.1:8888
     }
+
+    git.balajisivaraman.com {
+      import common_config
+      reverse_proxy http://127.0.0.1:3001
+    }
   '';
 
   services.fail2ban.enable = true;
@@ -189,6 +194,23 @@ with lib;
     "listen.group" = "caddy";
   };
 
+  # Git
+  services.gitea = {
+    enable = true;
+    appName = "Balaji Sivaraman - Git";
+    database = {
+      host = "/run/postgresql";
+      port = 5432;
+      type = "postgres";
+      user = "gitea";
+      name = "gitea";
+      createDatabase = false;
+    };
+    domain = "balajisivaraman.com";
+    rootUrl = "https://git.balajisivaraman.com";
+    httpPort = 3001;
+  };
+
   # RSS Reader
   services.miniflux = {
     enable = true;
@@ -217,7 +239,7 @@ with lib;
   services.postgresql = {
     enable = true;
     package = pkgs.postgresql_13;
-    ensureDatabases = [ "nextcloud" ];
+    ensureDatabases = [ "gitea" "nextcloud" ];
     ensureUsers = [
       {
         name = "nextcloud";
@@ -225,6 +247,20 @@ with lib;
           "DATABASE nextcloud" = "ALL PRIVILEGES";
         };
       }
+      {
+        name = "gitea";
+        ensurePermissions = {
+          "DATABASE gitea" = "ALL PRIVILEGES";
+        };
+      }
     ];
+    authentication = ''
+      local gitea all ident map=gitea-users
+    '';
+    # Map the gitea user to postgresql
+    identMap =
+    ''
+      gitea-users gitea gitea
+    '';
   };
 }
