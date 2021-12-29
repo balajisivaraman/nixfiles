@@ -43,6 +43,9 @@ with lib;
   ## Services
   #############################################################################
 
+  # Personal Finance
+  services.update-commodity-prices.enable = true;
+
   # WWW
   services.caddy.enable = true;
   services.caddy.config = ''

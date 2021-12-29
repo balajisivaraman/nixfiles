@@ -15,7 +15,7 @@ in
       wantedBy = [ "timers.target" ];
       after = [ "multi-user.target" ];
       timerConfig = {
-        OnCalendar = "*-*-* 08:00:00";
+        OnCalendar = "*-*-* 03:00:00";
       };
     };
     systemd.services.update-commodity-prices = {
