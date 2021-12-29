@@ -80,6 +80,7 @@
     gnupg
     gnutls
     htop
+    httpie
     killall
     man-pages
     neovim
