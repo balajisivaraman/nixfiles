@@ -54,6 +54,7 @@
   networking.firewall.enable = true;
   # Ping is enabled
   networking.firewall.allowPing = true;
+  networking.enableIPv6 = false;
 
   #############################################################################
   ## Package Management
