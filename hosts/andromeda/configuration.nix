@@ -13,6 +13,15 @@ with lib;
   boot.loader.grub.device = "nodev";
   boot.loader.timeout = 30;
 
+  nix = {
+    package = pkgs.nix_2_4;
+    extraOptions = ''
+      keep-outputs = true
+      keep-derivations = true
+      experimental-features = nix-command flakes
+    '';
+  };
+
   #############################################################################
   ## Networking
   #############################################################################
@@ -35,6 +44,7 @@ with lib;
   environment.systemPackages = with pkgs;
     [
       inetutils
+      influxdb
       mtr
       sysstat
     ];
@@ -45,6 +55,9 @@ with lib;
 
   # Personal Finance
   services.update-commodity-prices.enable = true;
+  services.hledger-to-influxdb.enable = true;
+  services.influxdb.enable = true;
+  services.grafana.enable = true;
 
   # WWW
   services.caddy.enable = true;
