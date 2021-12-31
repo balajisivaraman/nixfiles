@@ -115,6 +115,8 @@ with lib;
   services.thunderbird.enable = false;
   services.udev.packages = [ pkgs.yubikey-personalization ];
   services.zotero.enable = false;
+  services.influxdb.enable = true;
+  services.grafana.enable = true;
 
   nixpkgs.overlays =
   let
@@ -167,7 +169,9 @@ with lib;
         google-chrome
         gopls
         gparted
+        hledger
         imagemagick
+        influxdb
         jmtpfs
         keepassxc
         latest.firefox-nightly-bin
