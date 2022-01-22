@@ -183,6 +183,8 @@ with lib;
         nextcloud-client
         nix-direnv
         nodejs-16_x
+        nordic
+        obinskit
         pamixer
         pavucontrol
         pcmanfm
@@ -193,7 +195,6 @@ with lib;
         rust-analyzer
         sqlite
         stalonetray
-        nordic
         thunderbird
         tree-sitter
         udiskie
