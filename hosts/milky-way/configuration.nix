@@ -105,7 +105,6 @@ with lib;
   services.gvfs.enable = true;
   services.nextcloud-client.enable = true;
   services.pcscd.enable = true;
-  services.thunderbird.enable = false;
   services.udev.packages = [ pkgs.yubikey-personalization ];
   services.zotero.enable = false;
   services.influxdb.enable = true;
