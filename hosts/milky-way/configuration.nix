@@ -43,7 +43,7 @@ with lib;
       defaultFonts = {
         serif = [ "Noto Serif" ];
         sansSerif = [ "SF Pro Text" ];
-        monospace = [ "NotoSansMono Nerd Font" ];
+        monospace = [ "DankMono Nerd Font" ];
       };
     };
   };
@@ -71,24 +71,17 @@ with lib;
     displayManager = {
       autoLogin.enable = true;
       autoLogin.user = "balaji";
-      defaultSession = "none+xmonad";
+      defaultSession = "none+i3";
     };
     windowManager.i3 = {
       package = pkgs.i3-gaps;
       enable = true;
     };
-    windowManager.xmonad = {
-      enable = true;
-      extraPackages = haskellPackages: [
-        haskellPackages.xmonad-contrib_0_17_0
-        haskellPackages.xmonad-extras_0_17_0
-      ];
-      config = pkgs.lib.readFile ./xmonad-config.hs;
-    };
   };
 
   services.gnome.gnome-keyring.enable = true;
-  security.pam.services.balaji.enableGnomeKeyring = true;
+  security.pam.services.gdm.enableGnomeKeyring = true;
+  security.sudo.wheelNeedsPassword = false;
 
   # Enable nvidia graphics
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -136,81 +129,76 @@ with lib;
   ];
 
   environment.systemPackages = with pkgs;
-    let
-      polybar = pkgs.polybar.override {
-        i3Support = true;
-        i3GapsSupport = true;
-        pulseSupport = true;
-      };
-    in
-      [
-        alacritty
-        aspell
-        aspellDicts.en
-        audacity
-        binutils
-        cantata
-        delta
-        direnv
-        dunst
-        emacsPgtkGcc
-        feh
-        (fenix.stable.withComponents [
-          "cargo"
-          "clippy"
-          "rust-src"
-          "rustc"
-          "rustfmt"
-        ])
-        flameshot
-        gcc
-        gimp
-        go
-        google-chrome
-        gopls
-        gparted
-        hledger
-        imagemagick
-        influxdb
-        jmtpfs
-        keepassxc
-        latest.firefox-nightly-bin
-        libnotify
-        libreoffice-fresh
-        libsecret
-        lm_sensors
-        lxsession
-        nextcloud-client
-        nix-direnv
-        nodejs-16_x
-        nordic
-        obinskit
-        pamixer
-        pavucontrol
-        pcmanfm
-        picom
-        polybar
-        libsForQt5.qtkeychain
-        rofi
-        rust-analyzer
-        sqlite
-        stalonetray
-        thunderbird
-        tree-sitter
-        udiskie
-        vlc
-        xcape
-        xmobar
-        xorg.xmodmap
-        xss-lock
-        youtube-dl
-        yubikey-manager
-        yubikey-manager-qt
-        yubikey-personalization-gui
-        yubioath-desktop
-        zathura
-        zotero
-      ];
+    [
+      alacritty
+      aspell
+      aspellDicts.en
+      audacity
+      binutils
+      cantata
+      delta
+      direnv
+      dunst
+      emacsPgtkGcc
+      feh
+      (fenix.stable.withComponents [
+        "cargo"
+        "clippy"
+        "rust-src"
+        "rustc"
+        "rustfmt"
+      ])
+      flameshot
+      gcc
+      gimp
+      go
+      google-chrome
+      gopls
+      gparted
+      hledger
+      i3status-rust
+      imagemagick
+      influxdb
+      interception-tools
+      interception-tools-plugins.dual-function-keys
+      jmtpfs
+      keepassxc
+      latest.firefox-nightly-bin
+      libnotify
+      libreoffice-fresh
+      libsecret
+      lm_sensors
+      lxsession
+      nextcloud-client
+      nix-direnv
+      nodejs-18_x
+      nordic
+      obinskit
+      pamixer
+      pavucontrol
+      pcmanfm
+      picom
+      libsForQt5.qtkeychain
+      rofi
+      rust-analyzer
+      sqlite
+      stalonetray
+      thunderbird
+      tree-sitter
+      udiskie
+      vlc
+      xcape
+      xmobar
+      xorg.xmodmap
+      xss-lock
+      youtube-dl
+      yubikey-manager
+      yubikey-manager-qt
+      yubikey-personalization-gui
+      yubioath-desktop
+      zathura
+      zotero
+    ];
 
   environment.variables = {
     "RUST_SRC_PATH" = "${pkgs.fenix.stable.rust-src}/bin/rust-lib/src";

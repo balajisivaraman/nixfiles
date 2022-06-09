@@ -8,7 +8,7 @@
 , less
 , installShellFiles
 , makeWrapper
-, x11
+, xlibsWrapper
 , libxcb
 }:
 
@@ -25,7 +25,7 @@ rustPlatform.buildRustPackage rec {
   cargoSha256 = "sha256:089p2qn03yngbsh4q24cwhq5348xxf2ds0dixafa0fxlh75gnh10";
 
   nativeBuildInputs = [ pkg-config python3 installShellFiles makeWrapper  ];
-  buildInputs = [ x11 libxcb ];
+  buildInputs = [ xlibsWrapper libxcb ];
 
   meta = with lib; {
     description = "Distorts a screenshot and runs i3lock.";

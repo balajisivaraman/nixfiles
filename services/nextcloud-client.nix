@@ -12,10 +12,9 @@ in
   config = mkIf cfg.enable {
     systemd.services.nextcloud-client = {
       description = "Start Nextcloud";
-      after = [ "network-online.target" ];
-      wants = [ "network-online.target" ];
-      wantedBy = [ "graphical.target" ];
-      partOf = [ "graphical.target" ];
+      after = [ "graphical-session-pre.target" ];
+      wantedBy = [ "graphical-session.target" ];
+      partOf = [ "graphical-session.target" ];
       serviceConfig = {
         Type = "simple";
         ExecStart = "${pkgs.bash}/bin/bash --login -c ${pkgs.writeShellScript "nextcloud.sh" (fileContents ./nextcloud.sh)}";
