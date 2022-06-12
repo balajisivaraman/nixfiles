@@ -43,7 +43,7 @@ with lib;
       defaultFonts = {
         serif = [ "Noto Serif" ];
         sansSerif = [ "SF Pro Text" ];
-        monospace = [ "DankMono Nerd Font" ];
+        monospace = [ "PragmataPro Nerd Font" ];
       };
     };
   };
