@@ -183,6 +183,7 @@ with lib;
       libsForQt5.qtkeychain
       rofi
       rust-analyzer
+      signal-desktop
       sqlite
       stalonetray
       thunderbird
