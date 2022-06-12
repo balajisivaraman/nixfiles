@@ -169,6 +169,7 @@ with lib;
       libsecret
       lm_sensors
       lxsession
+      perl534Packages.FileMimeInfo
       nextcloud-client
       nix-direnv
       nodejs-18_x
