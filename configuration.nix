@@ -9,6 +9,7 @@
     ./services/update-commodity-prices.nix
     ./services/hledger-to-influxdb.nix
     ./services/nextcloud-client.nix
+    ./services/udevmon.nix
     ./services/zotero.nix
  ];
 }

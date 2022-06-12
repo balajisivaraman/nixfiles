@@ -106,6 +106,7 @@ with lib;
   services.nextcloud-client.enable = true;
   services.pcscd.enable = true;
   services.udev.packages = [ pkgs.yubikey-personalization ];
+  services.udevmon.enable = true;
   services.zotero.enable = false;
   services.influxdb.enable = true;
   services.grafana.enable = true;
