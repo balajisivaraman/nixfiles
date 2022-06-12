@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, nixpkgs, ... }:
 
 with lib;
 let
@@ -12,9 +12,10 @@ in
   config = mkIf cfg.enable {
     systemd.services.nextcloud-client = {
       description = "Start Nextcloud";
-      after = [ "graphical-session-pre.target" ];
-      wantedBy = [ "graphical-session.target" ];
-      partOf = [ "graphical-session.target" ];
+      after = [ "network-online.target" ];
+      wants = [ "network-online.target" ];
+      wantedBy = [ "graphical.target" ];
+      partOf = [ "graphical.target" ];
       serviceConfig = {
         Type = "simple";
         ExecStart = "${pkgs.bash}/bin/bash --login -c ${pkgs.writeShellScript "nextcloud.sh" (fileContents ./nextcloud.sh)}";
