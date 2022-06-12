@@ -95,7 +95,7 @@ with lib;
   #############################################################################
 
   fonts.otf-san-francisco.enable = true;
-  programs.gnupg.agent.pinentryFlavor = "qt";
+  programs.gnupg.agent.pinentryFlavor = "gtk2";
   programs.i3lockr.enable = true;
 
   services.change-wallpaper.enable = true;
@@ -178,6 +178,7 @@ with lib;
       pavucontrol
       pcmanfm
       picom
+      pinentry-gtk2
       libsForQt5.qtkeychain
       rofi
       rust-analyzer
