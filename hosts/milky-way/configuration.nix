@@ -97,11 +97,10 @@ with lib;
   fonts.otf-san-francisco.enable = true;
   programs.gnupg.agent.pinentryFlavor = "gtk2";
   programs.i3lockr.enable = true;
+  programs.emacs.enable = true;
 
   services.change-wallpaper.enable = true;
   services.clipcat.enable = true;
-  services.emacs.package = pkgs.emacsPgtkGcc;
-  services.emacs.enable = true;
   services.gvfs.enable = true;
   services.nextcloud-client.enable = true;
   services.pcscd.enable = true;
@@ -120,11 +119,6 @@ with lib;
   in [
     (import "${fetchTarball "https://github.com/nix-community/fenix/archive/main.tar.gz"}/overlay.nix")
     (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; } )
-    (import (builtins.fetchGit {
-      url = "https://github.com/nix-community/emacs-overlay.git";
-      ref = "master";
-      rev = "555de7d00eb7c8df21242fdad6f3a6f2201e7e14"; # change the revision
-    }))
     nightlyOverlay
   ];
 
@@ -139,7 +133,6 @@ with lib;
       delta
       direnv
       dunst
-      emacsPgtkGcc
       feh
       (fenix.stable.withComponents [
         "cargo"
